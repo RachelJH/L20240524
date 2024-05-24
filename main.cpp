@@ -16,7 +16,7 @@ void AddArray()
 	int* Temps = new int[Size + 1];
 	
 
-	RandomIndex = rand() % 10 + 1;
+	RandomIndex = rand() % Size + 1;
 
 	for (int i = 0; i < RandomIndex; i++) 
 	{
@@ -38,7 +38,7 @@ void AddArray()
 	{
 		cout << Numbers[i] << endl;
 	}
-
+	delete[] Numbers;
 }
 
 int main()
