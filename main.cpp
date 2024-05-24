@@ -6,36 +6,44 @@ void AddArray()
 {
 	int Size = 10;
 	int* Numbers = new int[Size];
-	int NewNumber = 0;
-
+	int RandomIndex = 0;
+	int NewNumber =0;
 	for (int i = 0; i < Size; i++)
 	{
 		Numbers[i] = i + 1;
 	}
 
-	int* Temp = new int[Size + 1];
+	int* Temps = new int[Size + 1];
+	
 
-	for (int i = 0; i < Size; i++)
+	RandomIndex = rand() % 10 + 1;
+
+	for (int i = 0; i < RandomIndex; i++) 
 	{
-		Temp[i] = Numbers[i];
+		Temps[i] = Numbers[i];
+	}
+	cin >> NewNumber;
+	Temps[RandomIndex] = NewNumber;
+	
+	for (int i = RandomIndex; i < Size; i++)
+	{
+		Temps[i + 1] = Numbers[i];
 	}
 
-	cout << "추가된 배열에 저장할 숫자를 입력하시오 : ";
-	cin >> NewNumber;
-	Temp[Size] = NewNumber;
 
 	delete[] Numbers;
+	Numbers = Temps;
 
-	Numbers = Temp;
-
-	for (int i = 0; i < Size + 1; i++)
+	for (int i = 0; i < Size+1; i++)
 	{
-		cout << Numbers[i] << endl;;
+		cout << Numbers[i] << endl;
 	}
+
 }
 
 int main()
 {
+	srand(time((time_t*)nullptr));
 	AddArray();
 
 	return 0;
